@@ -29,7 +29,7 @@ cancelBtn.addEventListener('click', () => {
 
 addEpisodeBtn.addEventListener('click', () => {
     if (editingEpisodeIndex === -1) {
-        // 添加新剧集的逻辑保持不变
+        // 添加新剧��的逻辑保持不变
         const episodeData = {
             title: document.getElementById('episodeTitle').value,
             thumbnail: document.getElementById('thumbnail').value,
@@ -206,7 +206,19 @@ function hideExportButton() {
 exportBtn.addEventListener('click', exportData);
 
 function exportData() {
-    const animeList = videos.map(({ title, brand, image, name, id, info, duration, isFavorite, inwhatlist }) => ({
+    const animeList = videos.map(({ 
+        title, 
+        brand, 
+        image, 
+        name, 
+        id, 
+        info, 
+        duration, 
+        isFavorite, 
+        inwhatlist,
+        state,           // 添加新字段
+        playProgress     // 添加新字段
+    }) => ({
         title,
         brand,
         image,
@@ -215,7 +227,9 @@ function exportData() {
         info,
         duration,
         isFavorite,
-        inwhatlist
+        inwhatlist,
+        state,          // 添加新字段
+        playProgress    // 添加新字段
     }));
 
     const episodes = videos.reduce((acc, video) => {
@@ -306,6 +320,13 @@ function importData(data) {
             duration: anime.duration || 0,
             isFavorite: anime.isFavorite || false,
             inwhatlist: anime.inwhatlist || false,
+            state: anime.state || "online",
+            playProgress: anime.playProgress || {
+                currentTime: "0:00",
+                duration: "00:00",
+                index: 0,
+                percentage: "0%"
+            },
             guimie: data.episodes[anime.name] || []
         }));
         renderVideos();
@@ -319,6 +340,6 @@ function importData(data) {
 // 添加生成新视频ID的函数
 function generateNewVideoId() {
     maxVideoId++;
-    return maxVideoId;
+    return maxVideoId-1;
 }
 

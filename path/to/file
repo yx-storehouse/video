@@ -1,0 +1,18 @@
+let currentId = 0;
+const generateId = () => {
+  return currentId++;
+};
+
+// 现有代码...
+{
+  "id": generateId(),
+  "state": "online",
+  "level": "beginner",
+  "playProgress": {
+    "currentTime": "0:00",
+    "duration": "24:03",
+    "index": 0,
+    "percentage": "0%"
+  }
+}
+// 现有代码... 
