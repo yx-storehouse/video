@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视频数据管理</title>
+<link rel="stylesheet" href="css.css">
+</head>
+<body>
+    <div class="container">
+        <h1>视频数据管理</h1>
+        <div id="dropZone">
+            <p>拖拽文件到这里或点击选择文件</p>
+            <input type="file" id="fileInput" accept=".js" style="display: none;">
+        </div>
+        <button id="showFormBtn">添加新视频</button>
+        <div id="addVideoForm" class="card hidden">
+            <h2 id="formTitle">添加新视频</h2>
+            <form id="videoForm">
+                <input type="hidden" id="editIndex" value="">
+                <div class="form-group">
+                    <label for="title">标题：</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="brand">品牌：</label>
+                    <input type="text" id="brand" name="brand" required>
+                </div>
+                <div class="form-group">
+                    <label for="image">图片 URL：</label>
+                    <input type="url" id="image" name="image" required>
+                </div>
+                <div class="form-group">
+                    <label for="name">名称：</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="info">视频简介：</label>
+                    <input type="text" id="info" name="info" required>
+                </div>
+                <h3>添加剧集</h3>
+                <div id="episodeForm">
+                    <div class="form-group">
+                        <label for="episodeTitle">剧集标题：</label>
+                        <input type="text" id="episodeTitle" name="episodeTitle">
+                    </div>
+                    <div class="form-group">
+                        <label for="thumbnail">缩略图 URL：</label>
+                        <input type="url" id="thumbnail" name="thumbnail">
+                    </div>
+                    <div class="form-group">
+                        <label for="duration">时长：</label>
+                        <input type="text" id="duration" name="duration">
+                    </div>
+                    <div class="form-group">
+                        <label for="comments">评论数：</label>
+                        <input type="number" id="comments" name="comments">
+                    </div>
+                    <div class="form-group">
+                        <label for="video">视频 URL：</label>
+                        <input type="url" id="video" name="video">
+                    </div>
+                    <button type="button" id="addEpisodeBtn">添加剧集</button>
+                </div>
+                <div id="episodeList" class="episode-list"></div>
+                <button type="submit" id="saveBtn">保存视频</button>
+                <button type="button" id="cancelBtn">取消</button>
+            </form>
+        </div>
+        <div id="videoList" class="video-list"></div>
+        <button id="exportBtn" class="hidden">导出数据</button>
+    </div>
+
+<script src="js.js"></script>
+</body>
+</html>
+
